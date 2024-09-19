@@ -1,1 +1,3 @@
 *.class
+/img/output/*.png
+/.vscode/*

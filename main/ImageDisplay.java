@@ -1,8 +1,8 @@
 package main;
 
 import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+// import java.awt.event.WindowAdapter;
+// import java.awt.event.WindowEvent;
 import java.awt.image.*;
 import java.io.*;
 import javax.swing.*;
@@ -111,62 +111,64 @@ public class ImageDisplay {
             }
         }
 
+        resultImageFrame = new JFrame("Result Image");
+        GridBagLayout gLayout2 = new GridBagLayout();
+        resultImageFrame.getContentPane().setLayout(gLayout2);
+
+        resultImageLabel = new JLabel(new ImageIcon(resultImage.value));
+
+        GridBagConstraints c2 = new GridBagConstraints();
+        c2.fill = GridBagConstraints.HORIZONTAL;
+        c2.anchor = GridBagConstraints.CENTER;
+        c2.weightx = 0.5;
+        c2.gridx = 0;
+        c2.gridy = 0;
+
+        c2.fill = GridBagConstraints.HORIZONTAL;
+        c2.gridx = 0;
+        c2.gridy = 1;
+        resultImageFrame.getContentPane().add(resultImageLabel, c2);
+
+        resultImageFrame.pack();
+        resultImageFrame.setVisible(true);
+
+        // Save result image to files
+        // int lastSeparatorIndex = path.lastIndexOf('/'); // Use '\\' for Windows paths
+        // String fileNameWithExtension = (lastSeparatorIndex == -1) ? path : path.substring(lastSeparatorIndex + 1);
+        // int lastDotIndex = fileNameWithExtension.lastIndexOf('.');
+        // String fileNameWithoutExtension = (lastDotIndex == -1) ? fileNameWithExtension : fileNameWithExtension.substring(0, lastDotIndex);
+        // imageUtils.saveImage(resultImage.value, "png", "./img/output/" + sampleType + "_" + fileNameWithoutExtension + "_type_" + reSampleMethod + "_" + output.width + " X " + output.height + ".png");
+        
+        // Terminate Program
+        resultImageFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
 		// Displays both images one after another, close first one (Original Image to see the Result Image)
-		ogImageFrame = new JFrame("Original Image");
-		GridBagLayout gLayout1 = new GridBagLayout();
-		ogImageFrame.getContentPane().setLayout(gLayout1);
+		// ogImageFrame = new JFrame("Original Image");
+		// GridBagLayout gLayout1 = new GridBagLayout();
+		// ogImageFrame.getContentPane().setLayout(gLayout1);
 
-		ogImageLabel = new JLabel(new ImageIcon(ogImage));
+		// ogImageLabel = new JLabel(new ImageIcon(ogImage));
 
-		GridBagConstraints c1 = new GridBagConstraints();
-		c1.fill = GridBagConstraints.HORIZONTAL;
-		c1.anchor = GridBagConstraints.CENTER;
-		c1.weightx = 0.5;
-		c1.gridx = 0;
-		c1.gridy = 0;
+		// GridBagConstraints c1 = new GridBagConstraints();
+		// c1.fill = GridBagConstraints.HORIZONTAL;
+		// c1.anchor = GridBagConstraints.CENTER;
+		// c1.weightx = 0.5;
+		// c1.gridx = 0;
+		// c1.gridy = 0;
 
-		c1.fill = GridBagConstraints.HORIZONTAL;
-		c1.gridx = 0;
-		c1.gridy = 1;
-		ogImageFrame.getContentPane().add(ogImageLabel, c1);
+		// c1.fill = GridBagConstraints.HORIZONTAL;
+		// c1.gridx = 0;
+		// c1.gridy = 1;
+		// ogImageFrame.getContentPane().add(ogImageLabel, c1);
 
-		ogImageFrame.pack();
-		ogImageFrame.setVisible(true);
+		// ogImageFrame.pack();
+		// ogImageFrame.setVisible(true);
 
-        ogImageFrame.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                resultImageFrame = new JFrame("Result Image");
-                GridBagLayout gLayout2 = new GridBagLayout();
-                resultImageFrame.getContentPane().setLayout(gLayout2);
-
-                resultImageLabel = new JLabel(new ImageIcon(resultImage.value));
-
-                GridBagConstraints c2 = new GridBagConstraints();
-                c2.fill = GridBagConstraints.HORIZONTAL;
-                c2.anchor = GridBagConstraints.CENTER;
-                c2.weightx = 0.5;
-                c2.gridx = 0;
-                c2.gridy = 0;
-
-                c2.fill = GridBagConstraints.HORIZONTAL;
-                c2.gridx = 0;
-                c2.gridy = 1;
-                resultImageFrame.getContentPane().add(resultImageLabel, c2);
-
-                resultImageFrame.pack();
-                resultImageFrame.setVisible(true);
-
-                // Save result image to files
-                int lastSeparatorIndex = path.lastIndexOf('/'); // Use '\\' for Windows paths
-                String fileNameWithExtension = (lastSeparatorIndex == -1) ? path : path.substring(lastSeparatorIndex + 1);
-                int lastDotIndex = fileNameWithExtension.lastIndexOf('.');
-                String fileNameWithoutExtension = (lastDotIndex == -1) ? fileNameWithExtension : fileNameWithExtension.substring(0, lastDotIndex);
-                imageUtils.saveImage(resultImage.value, "png", "./img/output/" + sampleType + "_" + fileNameWithoutExtension + "_type_" + reSampleMethod + "_" + output.width + " X " + output.height + ".png");
+        // ogImageFrame.addWindowListener(new WindowAdapter() {
+        //     @Override
+        //     public void windowClosing(WindowEvent e) {
                 
-                // Terminate Program
-                resultImageFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-            }
-        });
+    //         }
+    //     });
 	}
 }
